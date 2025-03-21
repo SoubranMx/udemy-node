@@ -1,0 +1,23 @@
+{
+  "name": "05 NOC",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon",
+    "build": "rimraf ./dist && tsc",
+    "start": "pnpm run build && node dist/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.6.5",
+  "type": "module",
+  "devDependencies": {
+    "@swc-node/register": "^1.10.10",
+    "@types/node": "^22.13.11",
+    "nodemon": "^3.1.9",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.8.2"
+  }
+}
