@@ -1,3 +1,9 @@
-const name: string = "Uriel";
+import { ServerApp } from "./presentation/server.js";
 
-console.log(name);
+(() => {
+  main();
+})();
+
+function main() {
+  ServerApp.start();
+}
