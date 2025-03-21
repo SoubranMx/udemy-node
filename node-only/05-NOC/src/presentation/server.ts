@@ -1,14 +1,12 @@
-import { CronJob } from "cron";
+import { CronService } from "./cron/cron-service.js";
 
 export class ServerApp {
   public static start() {
     console.log("Server started ...");
 
-    // See usage examples in: https://github.com/kelektiv/node-cron/tree/main/examples
-    const job = new CronJob("*/2 * * * * *", () => {
+    CronService.createJob("*/5 * * * * *", () => {
       const date = new Date();
-      console.log("2 second", date);
+      console.log("5 seconds", date);
     });
-    job.start();
   }
 }
