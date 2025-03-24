@@ -1,6 +1,5 @@
 import { FileSystemDatasource } from "@infrastructure/datasources/file-system.datasource.ts";
 import { LogRepositoryImpl } from "@infrastructure/repositories/log.repository.impl.ts";
-import { EmailService } from "./email/email.service.ts";
 
 const fileSystemLogRepository = new LogRepositoryImpl(
   new FileSystemDatasource()
@@ -20,15 +19,19 @@ export class ServerApp {
     console.log("Server started ...");
 
     //Email sender
-    const emailService = new EmailService();
-    emailService.sendEmail({
-      to: "uriel_bee15@hotmail.com",
-      subject: "Node NOC",
-      htmlBody: `<h3>Logs de sistema - NOC</h3>
-      <p>Lorem ipsum fasdfasdfasdf</p>
-      <p>Ver logs adjuntos</p>
-      `,
-    });
+
+    // const emailService = new EmailService();
+    // emailService.sendEmailWithFileSystemLogs(["uriel_bee15@hotmail.com"]);
+
+    // emailService.sendEmail({
+    //   to: "uriel_bee15@hotmail.com",
+    //   subject: "Node NOC",
+    //   htmlBody: `<h3>Logs de sistema - NOC</h3>
+    //   <p>Lorem ipsum fasdfasdfasdf</p>
+    //   <p>Ver logs adjuntos</p>
+    //   `,
+    // });
+
     //CRONJOB
     // const url = "http://localhost:3000";
     // const jobTimer = "*/10 * * * * *";
