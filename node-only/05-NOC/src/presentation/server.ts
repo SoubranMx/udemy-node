@@ -1,5 +1,7 @@
+import { SendEmailLogs } from "@domain/use-cases/email/send-email-logs.ts";
 import { FileSystemDatasource } from "@infrastructure/datasources/file-system.datasource.ts";
 import { LogRepositoryImpl } from "@infrastructure/repositories/log.repository.impl.ts";
+import { EmailService } from "./email/email.service.ts";
 
 const fileSystemLogRepository = new LogRepositoryImpl(
   new FileSystemDatasource()
@@ -14,12 +16,17 @@ function successInjection(url: string) {
 function errorInjection(error: string) {
   console.error(error);
 }
+
+const emailService = new EmailService();
+
 export class ServerApp {
   public static start() {
     console.log("Server started ...");
 
     //Email sender
-
+    new SendEmailLogs(emailService, fileSystemLogRepository).execute([
+      "uriel_bee15@hotmail.com",
+    ]);
     //Dependency injection
     // const emailService = new EmailService(fileSystemLogRepository);
     // emailService.sendEmailWithFileSystemLogs(["uriel_bee15@hotmail.com"]);

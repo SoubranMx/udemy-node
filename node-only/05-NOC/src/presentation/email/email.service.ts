@@ -1,6 +1,5 @@
 import { envs } from "@config/plugins/envs.plugin.ts";
 import { LogEntity, LogSeverityLevel } from "@domain/entities/log.entity.ts";
-import { LogRepository } from "@domain/repository/log.repository.ts";
 import nodemailer from "nodemailer";
 
 interface SendMailOptions {
@@ -25,7 +24,7 @@ export class EmailService {
     },
   });
 
-  constructor(private readonly logRepository: LogRepository) {}
+  constructor() {}
 
   async sendEmail(options: SendMailOptions): Promise<boolean> {
     const { htmlBody, subject, to, attachments = [] } = options;
@@ -43,7 +42,7 @@ export class EmailService {
         message: "Email sent",
         origin: emailServiceOrigin,
       });
-      this.logRepository.saveLog(log);
+      // this.logRepository.saveLog(log);
       return true;
     } catch (error) {
       const log = new LogEntity({
@@ -51,12 +50,12 @@ export class EmailService {
         message: "Email not sent!",
         origin: emailServiceOrigin,
       });
-      this.logRepository.saveLog(log);
+      // this.logRepository.saveLog(log);
       return false;
     }
   }
 
-  sendEmailWithFileSystemLogs(to: string | string[]) {
+  async sendEmailWithFileSystemLogs(to: string | string[]) {
     const subject = "Server logs";
     const htmlBody = `<h3>Logs de sistema - NOC</h3>
       <p>Lorem ipsum fasdfasdfasdf</p>
@@ -67,7 +66,7 @@ export class EmailService {
       { filename: "logs-high.log", path: "./logs/logs-high.log" },
     ];
 
-    this.sendEmail({
+    return this.sendEmail({
       to,
       subject,
       attachments,
