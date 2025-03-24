@@ -20,7 +20,8 @@ export class ServerApp {
 
     //Email sender
 
-    // const emailService = new EmailService();
+    //Dependency injection
+    // const emailService = new EmailService(fileSystemLogRepository);
     // emailService.sendEmailWithFileSystemLogs(["uriel_bee15@hotmail.com"]);
 
     // emailService.sendEmail({
