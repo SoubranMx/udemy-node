@@ -1,4 +1,4 @@
-import { LogEntity, LogSeverityLevel } from "@domain/entities/log.entity.js";
+import { LogEntity, LogSeverityLevel } from "@domain/entities/log.entity.ts";
 
 //abstract => can't create an instance of an abstract class
 //we can force the behavior of this class into other classes
