@@ -2,6 +2,10 @@
   "exclude": ["node_modules", "dist"],
   "include": ["src"],
   "compilerOptions": {
+    "paths": {
+      "@domain/*": ["./src/domain/*"],
+      "@presentation/*": ["./src/presentation/*"]
+    },
     /* Visit https://aka.ms/tsconfig to read more about this file */
 
     /* Projects */
