@@ -1,7 +1,6 @@
 import { FileSystemDatasource } from "@infrastructure/datasources/file-system.datasource.ts";
 import { LogRepositoryImpl } from "@infrastructure/repositories/log.repository.impl.ts";
-import { CheckService } from "../domain/use-cases/checks/check-service.js";
-import { CronService } from "./cron/cron-service.js";
+import { EmailService } from "./email/email.service.ts";
 
 const fileSystemLogRepository = new LogRepositoryImpl(
   new FileSystemDatasource()
@@ -20,14 +19,25 @@ export class ServerApp {
   public static start() {
     console.log("Server started ...");
 
-    const url = "http://localhost:3000";
-    const jobTimer = "*/10 * * * * *";
-    CronService.createJob(jobTimer, () => {
-      new CheckService(
-        fileSystemLogRepository,
-        () => successInjection(url),
-        errorInjection
-      ).execute(url);
+    //Email sender
+    const emailService = new EmailService();
+    emailService.sendEmail({
+      to: "uriel_bee15@hotmail.com",
+      subject: "Node NOC",
+      htmlBody: `<h3>Logs de sistema - NOC</h3>
+      <p>Lorem ipsum fasdfasdfasdf</p>
+      <p>Ver logs adjuntos</p>
+      `,
     });
+    //CRONJOB
+    // const url = "http://localhost:3000";
+    // const jobTimer = "*/10 * * * * *";
+    // CronService.createJob(jobTimer, () => {
+    //   new CheckService(
+    //     fileSystemLogRepository,
+    //     () => successInjection(url),
+    //     errorInjection
+    //   ).execute(url);
+    // });
   }
 }

@@ -16,6 +16,7 @@
   "devDependencies": {
     "@swc-node/register": "^1.10.10",
     "@types/node": "^22.13.11",
+    "@types/nodemailer": "^6.4.17",
     "nodemon": "^3.1.9",
     "rimraf": "^6.0.1",
     "typescript": "^5.8.2"
@@ -23,6 +24,7 @@
   "dependencies": {
     "cron": "^4.1.0",
     "dotenv": "^16.4.7",
-    "env-var": "^7.5.0"
+    "env-var": "^7.5.0",
+    "nodemailer": "^6.10.0"
   }
 }

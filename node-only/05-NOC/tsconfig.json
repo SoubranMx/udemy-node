@@ -5,7 +5,8 @@
     "paths": {
       "@domain/*": ["./src/domain/*"],
       "@presentation/*": ["./src/presentation/*"],
-      "@infrastructure/*": ["./src/infrastructure/*"]
+      "@infrastructure/*": ["./src/infrastructure/*"],
+      "@config/*": ["./src/config/*"]
     },
     /* Visit https://aka.ms/tsconfig to read more about this file */
 
