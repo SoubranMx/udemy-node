@@ -57,9 +57,9 @@ export class FileSystemDatasource implements LogDatasource {
 
     if (newLog.level === LogSeverityLevel.low) return;
     if (newLog.level === LogSeverityLevel.medium) {
-      fs.appendFileSync(this.mediumLogsPath, logAsJson);
+      fs.appendFileSync(this.mediumLogsPath, `${logAsJson}\n`);
     } else {
-      fs.appendFileSync(this.highLogsPath, logAsJson);
+      fs.appendFileSync(this.highLogsPath, `${logAsJson}\n`);
     }
   }
 }
