@@ -1,5 +1,5 @@
-import { ServerApp } from "./presentation/server.js";
-
+import { ServerApp } from "@presentation/server.ts";
+import "dotenv/config";
 (() => {
   main();
 })();
