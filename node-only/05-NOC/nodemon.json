@@ -2,5 +2,5 @@
   "watch": ["src"],
   "ext": ".ts,.js",
   "ignore": [],
-  "exec": "node --import @swc-node/register/esm-register ./src/app.ts"
+  "exec": "cls && node --import @swc-node/register/esm-register ./src/app.ts"
 }

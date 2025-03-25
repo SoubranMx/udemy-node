@@ -1,4 +1,3 @@
-import { SendEmailLogs } from "@domain/use-cases/email/send-email-logs.ts";
 import { FileSystemDatasource } from "@infrastructure/datasources/file-system.datasource.ts";
 import { LogRepositoryImpl } from "@infrastructure/repositories/log.repository.impl.ts";
 import { EmailService } from "./email/email.service.ts";
@@ -24,15 +23,15 @@ export class ServerApp {
     console.log("Server started ...");
 
     //Email sender
-    new SendEmailLogs(emailService, fileSystemLogRepository).execute([
-      "uriel_bee15@hotmail.com",
-    ]);
+    // new SendEmailLogs(emailService, fileSystemLogRepository).execute([
+    //   envs.DEFAULT_TO_MAIL,
+    // ]);
     //Dependency injection
     // const emailService = new EmailService(fileSystemLogRepository);
-    // emailService.sendEmailWithFileSystemLogs(["uriel_bee15@hotmail.com"]);
+    // emailService.sendEmailWithFileSystemLogs([envs.DEFAULT_TO_MAIL]);
 
     // emailService.sendEmail({
-    //   to: "uriel_bee15@hotmail.com",
+    //   to: envs.DEFAULT_TO_MAIL,
     //   subject: "Node NOC",
     //   htmlBody: `<h3>Logs de sistema - NOC</h3>
     //   <p>Lorem ipsum fasdfasdfasdf</p>

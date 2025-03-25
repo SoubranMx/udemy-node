@@ -6,5 +6,6 @@ export const envs = {
   MAILER_EMAIL: env.get("MAILER_EMAIL").required().asEmailString(),
   MAILER_SECRET_KEY: env.get("MAILER_SECRET_KEY").required().asString(),
   MAILER_SERVICE: env.get("MAILER_SERVICE").required().asString(),
+  DEFAULT_TO_MAIL: env.get("DEFAULT_TO_MAIL").required().asEmailString(),
   PROD: env.get("PROD").required().asBool(),
 };
