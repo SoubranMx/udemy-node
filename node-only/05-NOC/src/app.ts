@@ -1,5 +1,4 @@
 import { envs } from "@config/plugins/envs.plugin.ts";
-import { ServerApp } from "@presentation/server.ts";
 import "dotenv/config";
 import { MongoDatabase } from "./data/mongo/index.ts";
 
@@ -27,5 +26,21 @@ async function main() {
   // console.log(logs);
   // console.log(logs[2].message);
 
-  ServerApp.start();
+  // Prisma -> make sure import comes from @prisma/client not @prisma/client/extension or something else
+  // const prisma = new PrismaClient();
+  //Create
+  // const newLog = await prisma.logModel.create({
+  //   data: {
+  //     level: "HIGH",
+  //     message: "Test message from prisma",
+  //     origin: "App.ts",
+  //   },
+  // });
+  //Get -> findMany getAll, you can include where clauses, this is already typed due to prisma migration
+  // const logs = await prisma.logModel.findMany({
+  //   where: {
+  //     level: "MEDIUM",
+  //   },
+  // });
+  // ServerApp.start();
 }
