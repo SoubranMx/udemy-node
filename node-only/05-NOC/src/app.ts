@@ -1,4 +1,5 @@
 import { envs } from "@config/plugins/envs.plugin.ts";
+import { ServerApp } from "@presentation/server.ts";
 import "dotenv/config";
 import { MongoDatabase } from "./data/mongo/index.ts";
 
@@ -42,5 +43,5 @@ async function main() {
   //     level: "MEDIUM",
   //   },
   // });
-  // ServerApp.start();
+  ServerApp.start();
 }
