@@ -1,4 +1,5 @@
 import { envs } from "@config/plugins/envs.plugin.ts";
+import { ServerApp } from "@presentation/server.ts";
 import "dotenv/config";
 import { MongoDatabase } from "./data/mongo/index.ts";
 
@@ -26,5 +27,5 @@ async function main() {
   // console.log(logs);
   // console.log(logs[2].message);
 
-  // ServerApp.start();
+  ServerApp.start();
 }

@@ -1,9 +1,11 @@
-import { FileSystemDatasource } from "@infrastructure/datasources/file-system.datasource.ts";
+import { LogSeverityLevel } from "@domain/entities/log.entity.ts";
+import { MongoLogDatasource } from "@infrastructure/datasources/mongo-log.datasource.ts";
 import { LogRepositoryImpl } from "@infrastructure/repositories/log.repository.impl.ts";
 import { EmailService } from "./email/email.service.ts";
 
-const fileSystemLogRepository = new LogRepositoryImpl(
-  new FileSystemDatasource()
+const logRepository = new LogRepositoryImpl(
+  // new FileSystemDatasource()
+  new MongoLogDatasource()
   // new postgreDatasource
   // new mongoDatasource, etc
 );
@@ -19,7 +21,7 @@ function errorInjection(error: string) {
 const emailService = new EmailService();
 
 export class ServerApp {
-  public static start() {
+  public static async start() {
     console.log("Server started ...");
 
     //Email sender
@@ -44,10 +46,13 @@ export class ServerApp {
     // const jobTimer = "*/10 * * * * *";
     // CronService.createJob(jobTimer, () => {
     //   new CheckService(
-    //     fileSystemLogRepository,
+    //     logRepository,
     //     () => successInjection(url),
     //     errorInjection
     //   ).execute(url);
     // });
+
+    const logs = await logRepository.getLogs(LogSeverityLevel.high);
+    console.log(logs);
   }
 }
