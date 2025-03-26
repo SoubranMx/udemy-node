@@ -26,6 +26,7 @@ export class LogEntity {
 
   //"{"level":"high","message":"Hello World!","createdAt":12314151}"
   static fromJson = (json: string): LogEntity => {
+    json = json === "" ? "{}" : json; //make sure read line gives a json format
     const { message, level, createdAt, origin } = JSON.parse(json);
     //Should have guards
     //if(!message) throw new Error("Message is required");
