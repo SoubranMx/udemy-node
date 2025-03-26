@@ -39,4 +39,17 @@ export class LogEntity {
     // log.createdAt = new Date(createdAt); //Overwrite constructor createdAt with the log actual date.
     return log;
   };
+
+  //this adapts object from mongoDB schema to a LogEntity
+  static fromObject = (object: { [key: string]: any }): LogEntity => {
+    const { message, level, createdAt, origin } = object;
+    //we can make validations here
+    const log = new LogEntity({
+      message,
+      level,
+      origin,
+      createdAt,
+    });
+    return log;
+  };
 }
